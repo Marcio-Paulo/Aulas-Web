@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Blog de Referências</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Meu Blog de Referências</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a> |
+        <a href="Adicionar Imagem.html">Adicionar uma Foto</a> |
+        <a href="#">Contato</a>
+    </nav>
+    <div class="container">
+        <h2>Adicionar Nova Referência</h2>
+        <form id="referenceForm">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author" required>
+            <label for="content">Conteúdo:</label>
+            <textarea id="content" name="content" rows="5" required></textarea>
+            <input type="submit" value="Adicionar Referência">
+        </form>
+        <h2>Referências</h2>
+        <div id="references"></div>
+    </div>
+
+    <script>
+        document.getElementById('referenceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let title = document.getElementById('title').value;
+            let author = document.getElementById('author').value;
+            let content = document.getElementById('content').value;
+
+            
+            let post = document.createElement('div');
+            post.classList.add('post');
+
+            
+            post.innerHTML = `
+                <h2>${title}</h2>
+                <p>Por <strong>${author}</strong></p>
+                <p>${content}</p>
+            `;
+
+            
+            document.getElementById('references').appendChild(post);
+
+        
+            document.getElementById('title').value = '';
+            document.getElementById('author').value = '';
+            document.getElementById('content').value = '';
+        });
+    </script>
+</body>
+</html>
